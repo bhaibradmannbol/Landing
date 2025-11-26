@@ -2,8 +2,10 @@ import { Button } from '@/components/ui/button'
 import { Mail } from 'lucide-react'
 import { useState } from 'react'
 import SplitText from '@/components/ui/split-text'
+import { useLanguage } from '@/context/language-context'
 
 export default function CTASection() {
+  const { t } = useLanguage()
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState('');
 
@@ -57,17 +59,17 @@ export default function CTASection() {
           
           <div className="relative text-center space-y-6">
             <SplitText
-              text="Get Early Access"
+              text={t('getEarlyAccess')}
               className="text-4xl md:text-5xl font-bold text-white"
               delay={100}
               duration={0.6}
               splitType="words"
             />
             <p className="text-2xl md:text-3xl font-bold text-white max-w-2xl mx-auto">
-              Be among the first to experience HausPet
+              {t('beAmongFirst')}
             </p>
             <p className="text-lg text-white/70 max-w-xl mx-auto">
-              Join thousands of pet owners keeping their dogs healthy with real-time monitoring
+              {t('joinThousands')}
             </p>
             <div className="flex justify-center pt-4">
               <Button 
@@ -75,13 +77,13 @@ export default function CTASection() {
                 className="text-lg font-semibold bg-white text-black hover:bg-white/90"
                 onClick={() => document.getElementById('early-access')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                Get Early Access Now →
+                {t('getEarlyAccessNow')}
               </Button>
             </div>
             
             {/* Newsletter */}
             <div className="pt-8 max-w-md mx-auto">
-              <h3 className="text-lg font-semibold text-white mb-2">Stay Updated</h3>
+              <h3 className="text-lg font-semibold text-white mb-2">{t('stayUpdated')}</h3>
               <form onSubmit={handleSubmit} className="space-y-3">
                 <div className="flex gap-2">
                   <div className="relative flex-1">
@@ -101,19 +103,19 @@ export default function CTASection() {
                     className="bg-white text-black hover:bg-white/90"
                     disabled={status === 'submitting'}
                   >
-                    {status === 'submitting' ? 'Subscribing...' : 'Subscribe'}
+                    {status === 'submitting' ? t('subscribing') : t('subscribe')}
                   </Button>
                 </div>
                 {status === 'success' && (
                   <p className="text-sm text-green-400 font-medium">
-                    ✓ Welcome! Check your email for updates.
+                    {t('welcomeEmail')}
                   </p>
                 )}
                 <p className="text-sm text-white/90 font-bold">
-                  Be the early user to test it with expert vets
+                  {t('earlyUserText')}
                 </p>
                 <p className="text-sm text-white/60">
-                  We'll keep you updated about launch and beta testing
+                  {t('keepUpdated')}
                 </p>
               </form>
             </div>

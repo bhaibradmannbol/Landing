@@ -1,21 +1,24 @@
 import { useState, useEffect } from 'react'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Globe } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import { useLanguage } from '@/context/language-context'
 
-const menuItems = [
-  { name: 'Home', section: 'home' },
-  { name: 'Device', section: 'device-showcase' },
-  { name: 'Features', section: 'bento-features' },
-  { name: 'How It Works', section: 'how-it-works' },
-  { name: 'App', section: 'app-features' },
-  { name: 'Dr. HausPet', section: 'chat-section' },
-  { name: 'Early Access', section: 'early-access' },
+const getMenuItems = (t) => [
+  { name: t('home'), section: 'home' },
+  { name: t('device'), section: 'device-showcase' },
+  { name: t('features'), section: 'bento-features' },
+  { name: t('howItWorks'), section: 'how-it-works' },
+  { name: t('app'), section: 'app-features' },
+  { name: t('drHauspet'), section: 'chat-section' },
+  { name: t('earlyAccess'), section: 'early-access' },
 ]
 
 export default function AppleNav() {
   const [menuState, setMenuState] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const { language, toggleLanguage, t } = useLanguage()
+  const menuItems = getMenuItems(t)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -130,7 +133,17 @@ export default function AppleNav() {
               </div>
 
               {/* Buttons */}
-              <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
+              <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit items-center">
+                {/* Language Toggle */}
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="text-white/60 hover:text-white hover:bg-white/10 gap-1.5"
+                  onClick={toggleLanguage}
+                >
+                  <Globe className="size-4" />
+                  <span className="font-medium">{language === 'en' ? 'DE' : 'EN'}</span>
+                </Button>
                 <Button
                   variant="outline"
                   size="sm"
@@ -140,7 +153,7 @@ export default function AppleNav() {
                   )}
                   onClick={() => scrollToSection('chat-section')}
                 >
-                  <span>Try AI</span>
+                  <span>{t('tryAI')}</span>
                 </Button>
                 <Button
                   size="sm"
@@ -150,7 +163,7 @@ export default function AppleNav() {
                   )}
                   onClick={() => scrollToSection('early-access')}
                 >
-                  <span>Early Access</span>
+                  <span>{t('earlyAccess')}</span>
                 </Button>
                 <Button
                   size="sm"
@@ -160,7 +173,7 @@ export default function AppleNav() {
                   )}
                   onClick={() => scrollToSection('early-access')}
                 >
-                  <span>Get Started</span>
+                  <span>{t('getStarted')}</span>
                 </Button>
               </div>
             </div>

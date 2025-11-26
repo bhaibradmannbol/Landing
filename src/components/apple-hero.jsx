@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion'
+import { useLanguage } from '@/context/language-context'
 
 export default function AppleHero() {
+  const { t } = useLanguage()
+  
   const scrollToEarlyAccess = () => {
     document.getElementById('early-access')?.scrollIntoView({ behavior: 'smooth' })
   }
@@ -18,7 +21,7 @@ export default function AppleHero() {
           className="text-5xl md:text-7xl font-bold text-white leading-tight mb-6"
           style={{ maxWidth: '900px', margin: '0 auto 24px' }}
         >
-          Real-Time Pet Health Monitoring
+          {t('heroMainTitle')}
         </motion.h1>
 
         {/* Subheadline */}
@@ -28,7 +31,7 @@ export default function AppleHero() {
           transition={{ duration: 1, delay: 0.4 }}
           className="text-lg md:text-xl text-gray-300 mb-10 max-w-3xl mx-auto"
         >
-          One wearable device. Complete health visibility. Your vet gets real data between visits. Catch health problems before they become emergencies.
+          {t('heroSubtitle')}
         </motion.p>
 
         {/* CTA Buttons */}
@@ -42,13 +45,13 @@ export default function AppleHero() {
             onClick={scrollToEarlyAccess}
             className="px-8 py-3 text-black text-base font-semibold rounded-lg bg-gradient-to-r from-gray-200 to-gray-300 hover:from-gray-300 hover:to-gray-400 transition-all duration-300 min-w-[200px]"
           >
-            Get Free Early Access
+            {t('getFreeEarlyAccess')}
           </button>
           <button
             onClick={scrollToEarlyAccess}
             className="px-8 py-3 text-gray-300 text-base font-semibold rounded-lg border-2 border-gray-400 hover:bg-gray-400 hover:text-black transition-all duration-300 min-w-[200px]"
           >
-            Book Free Testing
+            {t('bookFreeTesting')}
           </button>
         </motion.div>
 
@@ -59,7 +62,7 @@ export default function AppleHero() {
           transition={{ duration: 1, delay: 0.8 }}
           className="text-sm text-gray-400"
         >
-          ✓ Test with certified veterinarians • ✓ No commitment • ✓ Completely free
+          {t('trustIndicators')}
         </motion.p>
       </div>
 

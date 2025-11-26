@@ -3,10 +3,12 @@ import React from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useLanguage } from '@/context/language-context'
 
 gsap.registerPlugin(ScrollTrigger)
 
 export default function DeviceShowcase() {
+  const { t } = useLanguage()
   const sectionRef = useRef(null)
   const deviceRef = useRef(null)
   const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 })
@@ -63,7 +65,7 @@ export default function DeviceShowcase() {
           viewport={{ once: true }}
           className="text-5xl md:text-7xl font-bold text-white mb-4 text-center"
         >
-          HausPet Smart Collar
+          {t('smartCollar')}
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: -20 }}
@@ -72,7 +74,7 @@ export default function DeviceShowcase() {
           viewport={{ once: true }}
           className="text-xl md:text-2xl text-white/70 mb-12 text-center max-w-2xl"
         >
-          Advanced health monitoring meets elegant design. Track vitals, activity, and wellness in real-time.
+          {t('deviceDesc')}
         </motion.p>
 
         {/* Device Image with Enhanced 3D */}
