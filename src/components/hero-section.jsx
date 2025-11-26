@@ -35,12 +35,15 @@ export default function HeroSection() {
                 <section>
                     <div className="relative mx-auto max-w-6xl px-6 pb-20 pt-32 lg:pt-48">
                         <div className="relative z-10 mx-auto max-w-4xl text-center">
+                            <div className="inline-block px-4 py-2 bg-primary/10 border border-primary/20 rounded-full text-sm text-primary font-medium mb-6">
+                                ✨ 1,200+ pet owners waiting
+                            </div>
                             <TextEffect
                                 preset="fade-in-blur"
                                 speedSegment={0.3}
                                 as="h1"
                                 className="text-balance text-5xl font-medium md:text-6xl">
-                                Healthier daily routine
+                                Every Heartbeat Matters—Real-Time Pet Health That Saves Lives
                             </TextEffect>
                             <TextEffect
                                 per="line"
@@ -49,7 +52,7 @@ export default function HeroSection() {
                                 delay={0.5}
                                 as="p"
                                 className="mx-auto mt-6 max-w-2xl text-pretty text-lg">
-                                Tailwindcss highly customizable components for building modern websites and applications that look and feel the way you mean it.
+                                Real-time monitoring. Peace of mind.
                             </TextEffect>
 
                             <AnimatedGroup
@@ -71,13 +74,13 @@ export default function HeroSection() {
                                         <Mail className="pointer-events-none absolute inset-y-0 left-4 my-auto size-4" />
 
                                         <input
-                                            placeholder="Your mail address"
+                                            placeholder="your@email.com"
                                             className="h-12 w-full bg-transparent pl-12 focus:outline-none"
                                             type="email" />
 
                                         <div className="md:pr-1.5 lg:pr-0">
                                             <Button aria-label="submit" size="sm" className="rounded-(--radius)">
-                                                <span className="hidden md:block">Get Started</span>
+                                                <span className="hidden md:block">Get Early Access</span>
                                                 <SendHorizonal className="relative mx-auto size-5 md:hidden" strokeWidth={2} />
                                             </Button>
                                         </div>

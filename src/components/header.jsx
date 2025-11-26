@@ -6,9 +6,8 @@ import { cn } from '@/lib/utils'
 
 const menuItems = [
     { name: 'Features', href: '#features' },
-    { name: 'Solution', href: '#solution' },
-    { name: 'Pricing', href: '#pricing' },
-    { name: 'About', href: '#about' },
+    { name: 'How it Works', href: '#how-it-works' },
+    { name: 'Early Access', href: '#early-access' },
 ]
 
 export const HeroHeader = () => {
@@ -82,16 +81,21 @@ export const HeroHeader = () => {
                                 <Button
                                     variant="outline"
                                     size="sm"
+                                    onClick={() => document.getElementById('early-access')?.scrollIntoView({ behavior: 'smooth' })}
                                     className={cn(isScrolled && 'lg:hidden')}>
-                                    <span>Login</span>
+                                    <span>Early Access</span>
                                 </Button>
-                                <Button size="sm" className={cn(isScrolled && 'lg:hidden')}>
-                                    <span>Sign Up</span>
+                                <Button 
+                                    size="sm" 
+                                    onClick={() => document.getElementById('early-access')?.scrollIntoView({ behavior: 'smooth' })}
+                                    className={cn(isScrolled && 'lg:hidden')}>
+                                    <span>Early Access</span>
                                 </Button>
                                 <Button
                                     size="sm"
+                                    onClick={() => document.getElementById('early-access')?.scrollIntoView({ behavior: 'smooth' })}
                                     className={cn(isScrolled ? 'lg:inline-flex' : 'hidden')}>
-                                    <span>Get Started</span>
+                                    <span>Early Access</span>
                                 </Button>
                             </div>
                         </div>
