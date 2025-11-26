@@ -57,34 +57,25 @@ export default function CTASection() {
           
           <div className="relative text-center space-y-6">
             <SplitText
-              text="Ready?"
+              text="Get Early Access"
               className="text-4xl md:text-5xl font-bold text-white"
               delay={100}
               duration={0.6}
               splitType="words"
             />
-            <SplitText
-              text="Join thousands of pet owners keeping their dogs healthy."
-              className="text-xl text-white/90 max-w-2xl mx-auto"
-              delay={80}
-              duration={0.6}
-              splitType="words"
-            />
-            <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
+            <p className="text-2xl md:text-3xl font-bold text-white max-w-2xl mx-auto">
+              Be among the first to experience HausPet
+            </p>
+            <p className="text-lg text-white/70 max-w-xl mx-auto">
+              Join thousands of pet owners keeping their dogs healthy with real-time monitoring
+            </p>
+            <div className="flex justify-center pt-4">
               <Button 
                 size="lg" 
                 className="text-lg font-semibold bg-white text-black hover:bg-white/90"
                 onClick={() => document.getElementById('early-access')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Get Early Access Now →
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="text-lg font-semibold border-white/30 text-white hover:bg-white/10"
-                onClick={() => document.getElementById('chat-section')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                <span className="mr-2">💬</span> Talk to Dr. HausPet
               </Button>
             </div>
             

@@ -61,10 +61,19 @@ export default function DeviceShowcase() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
           viewport={{ once: true }}
-          className="text-5xl md:text-7xl font-bold text-white mb-12 text-center"
+          className="text-5xl md:text-7xl font-bold text-white mb-4 text-center"
         >
           HausPet Smart Collar
         </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
+          viewport={{ once: true }}
+          className="text-xl md:text-2xl text-white/70 mb-12 text-center max-w-2xl"
+        >
+          Advanced health monitoring meets elegant design. Track vitals, activity, and wellness in real-time.
+        </motion.p>
 
         {/* Device Image with Enhanced 3D */}
         <motion.div
