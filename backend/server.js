@@ -5,9 +5,19 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const { Resend } = require('resend');
 
-dotenv.config();
+// Load .env file only in development (Railway sets env vars directly)
+if (process.env.NODE_ENV !== 'production') {
+  dotenv.config();
+}
 
 const app = express();
+
+// Debug: Log environment variables (without sensitive values)
+console.log('🔧 Environment check:');
+console.log('  - NODE_ENV:', process.env.NODE_ENV || 'not set');
+console.log('  - MONGODB_URI:', process.env.MONGODB_URI ? '✅ Set' : '❌ Missing');
+console.log('  - RESEND_API_KEY:', process.env.RESEND_API_KEY ? '✅ Set' : '❌ Missing');
+console.log('  - ADMIN_EMAIL:', process.env.ADMIN_EMAIL || 'not set');
 
 // Initialize Resend
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
