@@ -94,13 +94,13 @@ export default function AppleNav() {
             </div>
 
             {/* Desktop Nav Links - Center */}
-            <div className="absolute inset-0 m-auto hidden size-fit lg:block">
-              <ul className="flex gap-8 text-sm">
+            <div className="absolute inset-0 m-auto hidden size-fit lg:block" style={{ maxWidth: 'calc(100% - 280px)' }}>
+              <ul className="flex gap-6 text-sm">
                 {menuItems.map((item, index) => (
                   <li key={index}>
                     <button
                       onClick={() => scrollToSection(item.section)}
-                      className="text-white/60 hover:text-white block duration-150"
+                      className="text-white/60 hover:text-white block duration-150 whitespace-nowrap"
                     >
                       <span>{item.name}</span>
                     </button>
@@ -133,22 +133,22 @@ export default function AppleNav() {
               </div>
 
               {/* Buttons */}
-              <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit items-center">
+              <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-2 sm:space-y-0 md:w-fit items-center">
                 {/* Language Toggle */}
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="text-white/60 hover:text-white hover:bg-white/10 gap-1.5"
+                  className="text-white/60 hover:text-white hover:bg-white/10 gap-1 px-2"
                   onClick={toggleLanguage}
                 >
-                  <Globe className="size-4" />
-                  <span className="font-medium">{language === 'en' ? 'DE' : 'EN'}</span>
+                  <Globe className="size-3.5" />
+                  <span className="font-medium text-xs">{language === 'en' ? 'DE' : 'EN'}</span>
                 </Button>
                 <Button
                   variant="outline"
                   size="sm"
                   className={cn(
-                    'border-white/20 text-white hover:bg-white/10',
+                    'border-white/20 text-white hover:bg-white/10 text-xs px-3',
                     isScrolled && 'lg:hidden'
                   )}
                   onClick={() => scrollToSection('chat-section')}
@@ -158,7 +158,7 @@ export default function AppleNav() {
                 <Button
                   size="sm"
                   className={cn(
-                    'bg-white text-black hover:bg-white/90',
+                    'bg-white text-black hover:bg-white/90 text-xs px-3',
                     isScrolled && 'lg:hidden'
                   )}
                   onClick={() => scrollToSection('early-access')}
@@ -168,7 +168,7 @@ export default function AppleNav() {
                 <Button
                   size="sm"
                   className={cn(
-                    'bg-white text-black hover:bg-white/90 hidden',
+                    'bg-white text-black hover:bg-white/90 hidden text-xs px-3',
                     isScrolled && 'lg:inline-flex'
                   )}
                   onClick={() => scrollToSection('early-access')}
