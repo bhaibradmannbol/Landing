@@ -25,95 +25,29 @@ export function initAnimations() {
 
   gsap.ticker.lagSmoothing(1000, 16) // Better performance
 
-  // Optimized device progressive rotation and scaling
-  const deviceTimeline = gsap.timeline({
-    scrollTrigger: {
-      trigger: '#device-showcase',
-      start: 'top top',
-      end: 'bottom top',
-      scrub: 0.5, // Reduced for smoother performance
-      pin: false,
-      invalidateOnRefresh: true,
-    }
-  })
+  // Only run device animations if element exists
+  const deviceImage = document.querySelector('.device-image')
+  if (deviceImage) {
+    const deviceTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: '#device-showcase',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 0.5,
+        pin: false,
+        invalidateOnRefresh: true,
+      }
+    })
 
-  deviceTimeline
-    .to('.device-image', {
+    deviceTimeline.to('.device-image', {
       rotateY: -25,
       rotateX: 5,
       scale: 1.1,
       duration: 1,
-      ease: 'none', // Linear for scrub animations
-      force3D: true, // GPU acceleration
+      ease: 'none',
+      force3D: true,
     })
-
-  // Problem section - device shrinks more
-  gsap.to('.device-image', {
-    scrollTrigger: {
-      trigger: '#problem-section',
-      start: 'top center',
-      end: 'bottom center',
-      scrub: 0.5,
-      invalidateOnRefresh: true,
-    },
-    rotateY: -45,
-    rotateX: 15,
-    scale: 0.7,
-    x: -100,
-    opacity: 0.8,
-    ease: 'none',
-    force3D: true,
-  })
-
-  // Solution section - device even smaller
-  gsap.to('.device-image', {
-    scrollTrigger: {
-      trigger: '#solution-section',
-      start: 'top center',
-      end: 'bottom center',
-      scrub: 0.5,
-      invalidateOnRefresh: true,
-    },
-    rotateY: -50,
-    rotateX: 20,
-    scale: 0.5,
-    x: -150,
-    opacity: 0.6,
-    ease: 'none',
-    force3D: true,
-  })
-
-  // Features section - device fades more
-  gsap.to('.device-image', {
-    scrollTrigger: {
-      trigger: '#features',
-      start: 'top center',
-      end: 'bottom center',
-      scrub: 0.5,
-      invalidateOnRefresh: true,
-    },
-    scale: 0.4,
-    x: -200,
-    opacity: 0.4,
-    ease: 'none',
-    force3D: true,
-  })
-
-  // Chat section - device becomes ghost
-  gsap.to('.device-image', {
-    scrollTrigger: {
-      trigger: '#chat-section',
-      start: 'top center',
-      end: 'center center',
-      scrub: 0.5,
-      invalidateOnRefresh: true,
-    },
-    scale: 0.3,
-    x: -250,
-    opacity: 0.2,
-    ease: 'none',
-    force3D: true,
-  })
+  }
 
   // Optimized card animations
   gsap.utils.toArray('.glass-card').forEach((card) => {
