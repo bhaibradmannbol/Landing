@@ -58,9 +58,14 @@ app.use(express.json());
 const mongoUri = process.env.MONGODB_URI;
 if (mongoUri && mongoUri.startsWith('mongodb')) {
   console.log('🔄 Connecting to MongoDB...');
-  mongoose.connect(mongoUri)
+  mongoose.connect(mongoUri, {
+    serverSelectionTimeoutMS: 10000,
+    socketTimeoutMS: 45000,
+  })
     .then(() => console.log('✅ MongoDB connected'))
     .catch(err => console.error('❌ MongoDB error:', err.message));
+} else {
+  console.log('⚠️ No MongoDB URI provided, running without database');
 }
 
 // ============ DATABASE SCHEMA ============
