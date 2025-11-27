@@ -59,10 +59,10 @@ export default function App() {
       <DeviceShowcase />
       
       <BentoGridSection />
+      <TrustedByVets />
       <HowItWorks />
       <AppScreenshots />
       <ChatSection />
-      <TrustedByVets />
       <StatsImpactSection />
       <EarlyAccessSection />
       <CTASection />
