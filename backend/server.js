@@ -64,47 +64,225 @@ const subscriberSchema = new mongoose.Schema({
 
 const Subscriber = mongoose.model('Subscriber', subscriberSchema);
 
-// ============ EMAIL TEMPLATE ============
+// ============ EMAIL TEMPLATES ============
 const getWelcomeEmail = (name) => `
 <!DOCTYPE html>
 <html>
 <head>
-  <style>
-    body { font-family: -apple-system, sans-serif; line-height: 1.6; margin: 0; padding: 0; background: #f5f5f5; }
-    .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-    .card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-    .header { background: linear-gradient(135deg, #1a1a1a 0%, #333 100%); color: white; padding: 40px 30px; text-align: center; }
-    .content { padding: 30px; }
-    .feature { margin: 12px 0; padding: 12px; background: #f9f9f9; border-radius: 8px; }
-    .cta { display: inline-block; background: #000; color: white; padding: 14px 28px; border-radius: 8px; text-decoration: none; margin: 20px 0; }
-    .footer { text-align: center; padding: 20px; color: #666; font-size: 12px; }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to HausPet</title>
 </head>
-<body>
-  <div class="container">
-    <div class="card">
-      <div class="header">
-        <h1>🐾 Welcome to HausPet!</h1>
-        <p>You're on the early access list</p>
-      </div>
-      <div class="content">
-        <p>Hi ${name || 'there'}!</p>
-        <p>Thanks for joining HausPet early access. You'll be among the first to experience real-time pet health monitoring.</p>
-        
-        <div class="feature">✓ <strong>24/7 Health Monitoring</strong> - Heart rate, temperature, activity</div>
-        <div class="feature">✓ <strong>AI Health Insights</strong> - Powered by Dr. HausPet</div>
-        <div class="feature">✓ <strong>Early Adopter Benefits</strong> - Special pricing & lifetime perks</div>
-        
-        <p style="text-align: center;">
-          <a href="https://hauspet.app" class="cta">Learn More →</a>
-        </p>
-        
-        <p>We'll notify you when we're ready to ship!</p>
-        <p><strong>— The HausPet Team 🐾</strong></p>
-      </div>
-    </div>
-    <div class="footer">© 2024 HausPet. All rights reserved.</div>
-  </div>
+<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #000000;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #000000; padding: 40px 20px;">
+    <tr>
+      <td align="center">
+        <table width="600" cellpadding="0" cellspacing="0" style="max-width: 600px;">
+          <!-- Logo -->
+          <tr>
+            <td align="center" style="padding-bottom: 30px;">
+              <span style="font-size: 40px;">🐾</span>
+              <h1 style="color: #ffffff; margin: 10px 0 0 0; font-size: 28px; font-weight: 700;">HausPet</h1>
+            </td>
+          </tr>
+          
+          <!-- Main Card -->
+          <tr>
+            <td>
+              <table width="100%" cellpadding="0" cellspacing="0" style="background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); border-radius: 20px; border: 1px solid rgba(255,255,255,0.1);">
+                <tr>
+                  <td style="padding: 50px 40px;">
+                    <!-- Welcome Badge -->
+                    <table width="100%" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td align="center" style="padding-bottom: 30px;">
+                          <span style="display: inline-block; background: rgba(74, 222, 128, 0.2); color: #4ade80; padding: 8px 20px; border-radius: 50px; font-size: 14px; font-weight: 600;">
+                            ✓ You're on the Early Access List
+                          </span>
+                        </td>
+                      </tr>
+                    </table>
+                    
+                    <!-- Greeting -->
+                    <h2 style="color: #ffffff; font-size: 32px; font-weight: 700; margin: 0 0 20px 0; text-align: center;">
+                      Welcome${name ? ', ' + name : ''}! 🎉
+                    </h2>
+                    
+                    <p style="color: rgba(255,255,255,0.8); font-size: 16px; line-height: 1.7; margin: 0 0 30px 0; text-align: center;">
+                      Thank you for joining HausPet's early access program. You're now part of an exclusive group who will be the first to experience the future of pet health monitoring.
+                    </p>
+                    
+                    <!-- What's Coming -->
+                    <h3 style="color: #ffffff; font-size: 18px; font-weight: 600; margin: 30px 0 20px 0;">
+                      What you'll get as an early adopter:
+                    </h3>
+                    
+                    <!-- Features -->
+                    <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 30px;">
+                      <tr>
+                        <td style="padding: 15px; background: rgba(255,255,255,0.05); border-radius: 12px; margin-bottom: 10px;">
+                          <table cellpadding="0" cellspacing="0">
+                            <tr>
+                              <td style="width: 40px; vertical-align: top;">
+                                <span style="font-size: 24px;">💓</span>
+                              </td>
+                              <td>
+                                <strong style="color: #ffffff; font-size: 15px;">24/7 Health Monitoring</strong>
+                                <p style="color: rgba(255,255,255,0.6); font-size: 14px; margin: 5px 0 0 0;">Real-time heart rate, temperature & activity tracking</p>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr><td style="height: 10px;"></td></tr>
+                      <tr>
+                        <td style="padding: 15px; background: rgba(255,255,255,0.05); border-radius: 12px;">
+                          <table cellpadding="0" cellspacing="0">
+                            <tr>
+                              <td style="width: 40px; vertical-align: top;">
+                                <span style="font-size: 24px;">🤖</span>
+                              </td>
+                              <td>
+                                <strong style="color: #ffffff; font-size: 15px;">Dr. HausPet AI Assistant</strong>
+                                <p style="color: rgba(255,255,255,0.6); font-size: 14px; margin: 5px 0 0 0;">Get instant health insights powered by advanced AI</p>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr><td style="height: 10px;"></td></tr>
+                      <tr>
+                        <td style="padding: 15px; background: rgba(255,255,255,0.05); border-radius: 12px;">
+                          <table cellpadding="0" cellspacing="0">
+                            <tr>
+                              <td style="width: 40px; vertical-align: top;">
+                                <span style="font-size: 24px;">🏥</span>
+                              </td>
+                              <td>
+                                <strong style="color: #ffffff; font-size: 15px;">Vet Integration</strong>
+                                <p style="color: rgba(255,255,255,0.6); font-size: 14px; margin: 5px 0 0 0;">Share health data directly with your veterinarian</p>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr><td style="height: 10px;"></td></tr>
+                      <tr>
+                        <td style="padding: 15px; background: rgba(255,255,255,0.05); border-radius: 12px;">
+                          <table cellpadding="0" cellspacing="0">
+                            <tr>
+                              <td style="width: 40px; vertical-align: top;">
+                                <span style="font-size: 24px;">🎁</span>
+                              </td>
+                              <td>
+                                <strong style="color: #ffffff; font-size: 15px;">Early Adopter Benefits</strong>
+                                <p style="color: rgba(255,255,255,0.6); font-size: 14px; margin: 5px 0 0 0;">Exclusive pricing & lifetime perks for founding members</p>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                    
+                    <!-- CTA Button -->
+                    <table width="100%" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td align="center" style="padding: 20px 0;">
+                          <a href="https://helpmehauspet.net" style="display: inline-block; background: #ffffff; color: #000000; padding: 16px 40px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 16px;">
+                            Visit HausPet →
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+                    
+                    <!-- What's Next -->
+                    <table width="100%" cellpadding="0" cellspacing="0" style="margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px;">
+                      <tr>
+                        <td>
+                          <h3 style="color: #ffffff; font-size: 16px; font-weight: 600; margin: 0 0 15px 0;">What happens next?</h3>
+                          <p style="color: rgba(255,255,255,0.6); font-size: 14px; line-height: 1.6; margin: 0;">
+                            We're currently in clinical testing with veterinary partners across Europe. As an early access member, you'll be among the first to know when we're ready to ship. We'll send you updates on our progress and exclusive invites to beta testing.
+                          </p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          
+          <!-- Footer -->
+          <tr>
+            <td style="padding: 30px 0; text-align: center;">
+              <p style="color: rgba(255,255,255,0.4); font-size: 13px; margin: 0 0 10px 0;">
+                Questions? Reply to this email or reach us at hello@helpmehauspet.net
+              </p>
+              <p style="color: rgba(255,255,255,0.3); font-size: 12px; margin: 0;">
+                © 2024 HausPet. All rights reserved.<br>
+                Keeping pets healthy, one heartbeat at a time.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+`;
+
+// Admin notification email template
+const getAdminNotificationEmail = (name, email, userType, totalSubscribers) => `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="margin: 0; padding: 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #f5f5f5;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 500px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+    <tr>
+      <td style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); padding: 25px; text-align: center;">
+        <h1 style="color: #ffffff; margin: 0; font-size: 22px;">🎉 New Early Access Signup!</h1>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 30px;">
+        <table width="100%" cellpadding="0" cellspacing="0">
+          <tr>
+            <td style="padding: 12px 0; border-bottom: 1px solid #eee;">
+              <strong style="color: #666; font-size: 13px;">NAME</strong><br>
+              <span style="color: #000; font-size: 16px;">${name || 'Not provided'}</span>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 12px 0; border-bottom: 1px solid #eee;">
+              <strong style="color: #666; font-size: 13px;">EMAIL</strong><br>
+              <a href="mailto:${email}" style="color: #10b981; font-size: 16px; text-decoration: none;">${email}</a>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 12px 0; border-bottom: 1px solid #eee;">
+              <strong style="color: #666; font-size: 13px;">TYPE</strong><br>
+              <span style="color: #000; font-size: 16px;">${userType === 'veterinarian' ? '🩺 Veterinarian' : '🐕 Pet Owner'}</span>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 12px 0; border-bottom: 1px solid #eee;">
+              <strong style="color: #666; font-size: 13px;">SIGNED UP</strong><br>
+              <span style="color: #000; font-size: 16px;">${new Date().toLocaleString('en-US', { dateStyle: 'full', timeStyle: 'short' })}</span>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 12px 0;">
+              <strong style="color: #666; font-size: 13px;">TOTAL SUBSCRIBERS</strong><br>
+              <span style="color: #10b981; font-size: 24px; font-weight: 700;">${totalSubscribers}</span>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
 </body>
 </html>
 `;
@@ -148,37 +326,30 @@ app.post('/api/early-access', async (req, res) => {
     // Save to database
     const subscriber = await Subscriber.create({ email, name, userType });
     
-    // Send welcome email to user via Resend
+    // Get total subscriber count for admin notification
+    const totalSubscribers = await Subscriber.countDocuments();
+    
+    // Send emails via Resend
     if (resend) {
       try {
         // Send welcome email to user
         await resend.emails.send({
           from: process.env.RESEND_FROM_EMAIL || 'HausPet <onboarding@resend.dev>',
           to: email,
-          subject: '🐾 Welcome to HausPet Early Access!',
+          subject: '� Welcome tom HausPet Early Access!',
           html: getWelcomeEmail(name),
         });
         console.log('📧 Welcome email sent to:', email);
         
         // Send notification to admin
-        const adminEmail = process.env.ADMIN_EMAIL || 'bhaveshchaudhary@icloud.com';
+        const adminEmail = process.env.ADMIN_EMAIL || 'helpmehauspet@gmail.com';
         await resend.emails.send({
           from: process.env.RESEND_FROM_EMAIL || 'HausPet <onboarding@resend.dev>',
           to: adminEmail,
-          subject: '🎉 New Early Access Signup!',
-          html: `
-            <div style="font-family: -apple-system, sans-serif; padding: 20px;">
-              <h2>New Early Access Signup!</h2>
-              <p><strong>Name:</strong> ${name || 'Not provided'}</p>
-              <p><strong>Email:</strong> ${email}</p>
-              <p><strong>Type:</strong> ${userType}</p>
-              <p><strong>Time:</strong> ${new Date().toLocaleString()}</p>
-              <hr>
-              <p style="color: #666;">Total subscribers can be viewed at /api/subscribers</p>
-            </div>
-          `,
+          subject: `🎉 New Signup: ${email}`,
+          html: getAdminNotificationEmail(name, email, userType, totalSubscribers),
         });
-        console.log('📧 Admin notification sent');
+        console.log('📧 Admin notification sent to:', adminEmail);
       } catch (emailError) {
         console.error('Email error:', emailError.message);
       }
