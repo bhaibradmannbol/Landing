@@ -162,6 +162,22 @@ const translations = {
     yearsExperience: 'Years Clinical Experience',
     vetsJoining: 'Vets Joining Network',
     clinicalGrade: 'Clinical Grade',
+    
+    // Early Access Form
+    yourName: 'Your name (optional)',
+    yourEmail: 'Your email address',
+    submitting: 'Submitting...',
+    successMessage: 'Welcome! You\'re on the early access list.',
+    alreadySubscribed: 'This email is already registered.',
+    errorMessage: 'Something went wrong. Please try again.',
+    
+    // Waitlist Modal
+    joinWaitlistTitle: 'Join the Waitlist',
+    joinWaitlistDesc: 'Be among the first to experience HausPet. Get early access and exclusive benefits.',
+    joinWaitlist: 'Join Waitlist',
+    welcomeAboard: 'Welcome aboard!',
+    checkEmail: 'Check your email for confirmation.',
+    noSpam: 'No spam, ever. Unsubscribe anytime.',
   },
   de: {
     // Nav
@@ -324,6 +340,22 @@ const translations = {
     yearsExperience: 'Jahre Klinische Erfahrung',
     vetsJoining: 'Tierärzte im Netzwerk',
     clinicalGrade: 'Klinische Qualität',
+    
+    // Early Access Form
+    yourName: 'Ihr Name (optional)',
+    yourEmail: 'Ihre E-Mail-Adresse',
+    submitting: 'Wird gesendet...',
+    successMessage: 'Willkommen! Sie sind auf der Early-Access-Liste.',
+    alreadySubscribed: 'Diese E-Mail ist bereits registriert.',
+    errorMessage: 'Etwas ist schief gelaufen. Bitte versuchen Sie es erneut.',
+    
+    // Waitlist Modal
+    joinWaitlistTitle: 'Warteliste beitreten',
+    joinWaitlistDesc: 'Gehören Sie zu den Ersten, die HausPet erleben. Erhalten Sie frühen Zugang und exklusive Vorteile.',
+    joinWaitlist: 'Warteliste beitreten',
+    welcomeAboard: 'Willkommen an Bord!',
+    checkEmail: 'Überprüfen Sie Ihre E-Mail zur Bestätigung.',
+    noSpam: 'Kein Spam, niemals. Jederzeit abmelden.',
   }
 }
 

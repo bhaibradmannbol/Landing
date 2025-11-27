@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, useScroll, useSpring } from 'framer-motion'
 import AppleNav from '@/components/apple-nav'
 import AppleHero from '@/components/apple-hero'
@@ -13,9 +13,11 @@ import StatsImpactSection from '@/components/stats-impact-section'
 import CTASection from '@/components/cta-section'
 import Footer from '@/components/footer'
 import LightRays from '@/components/ui/light-rays'
+import WaitlistModal from '@/components/waitlist-modal'
 import { initAnimations } from '@/lib/animations'
 
 export default function App() {
+  const [isWaitlistOpen, setIsWaitlistOpen] = useState(false)
   const { scrollYProgress } = useScroll()
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -49,11 +51,14 @@ export default function App() {
       {/* Black Background */}
       <LightRays />
       
+      {/* Waitlist Modal */}
+      <WaitlistModal isOpen={isWaitlistOpen} onClose={() => setIsWaitlistOpen(false)} />
+      
       {/* Navigation with Logo */}
-      <AppleNav />
+      <AppleNav onOpenWaitlist={() => setIsWaitlistOpen(true)} />
       
       {/* Apple-style Hero */}
-      <AppleHero />
+      <AppleHero onOpenWaitlist={() => setIsWaitlistOpen(true)} />
       
       {/* Device Showcase with 3D Rotation */}
       <DeviceShowcase />

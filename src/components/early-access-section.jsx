@@ -1,12 +1,45 @@
+import { useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { Check, ExternalLink } from 'lucide-react'
+import { Check, Mail } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useLanguage } from '@/context/language-context'
 
-const GOOGLE_FORM_URL = 'https://forms.gle/your-form-id' // Replace with actual form URL
-
 export default function EarlyAccessSection() {
   const { t } = useLanguage()
+  const [email, setEmail] = useState('')
+  const [name, setName] = useState('')
+  const [status, setStatus] = useState('')
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setStatus('submitting')
+    
+    try {
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001'
+      const response = await fetch(`${apiUrl}/api/early-access`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, name, userType: 'pet-owner' }),
+      })
+      
+      const data = await response.json()
+      
+      if (data.success) {
+        setStatus('success')
+        setEmail('')
+        setName('')
+      } else if (response.status === 409) {
+        setStatus('exists')
+      } else {
+        setStatus('error')
+      }
+    } catch (error) {
+      console.error('Error:', error)
+      setStatus('error')
+    }
+    
+    setTimeout(() => setStatus(''), 5000)
+  }
   
   return (
     <section id="early-access" className="py-24 px-6">
@@ -61,16 +94,54 @@ export default function EarlyAccessSection() {
               ))}
             </div>
 
-            <Button 
-              size="lg" 
-              className="w-full mb-4 bg-white text-black hover:bg-white/90 font-semibold"
-              onClick={() => window.open(GOOGLE_FORM_URL, '_blank')}
-            >
-              <span>{t('requestFreeAccess')}</span>
-              <ExternalLink className="w-4 h-4 ml-2" />
-            </Button>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder={t('yourName')}
+                  className="w-full h-12 px-4 rounded-lg bg-white/5 text-white placeholder:text-white/40 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
+                />
+              </div>
+              <div className="relative">
+                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-white/40" />
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder={t('yourEmail')}
+                  required
+                  className="w-full h-12 pl-11 pr-4 rounded-lg bg-white/5 text-white placeholder:text-white/40 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50"
+                />
+              </div>
+              <Button 
+                type="submit"
+                size="lg" 
+                className="w-full bg-white text-black hover:bg-white/90 font-semibold"
+                disabled={status === 'submitting'}
+              >
+                {status === 'submitting' ? t('submitting') : t('requestFreeAccess')}
+              </Button>
+              
+              {status === 'success' && (
+                <p className="text-sm text-center text-green-400 font-medium">
+                  ✓ {t('successMessage')}
+                </p>
+              )}
+              {status === 'exists' && (
+                <p className="text-sm text-center text-yellow-400 font-medium">
+                  {t('alreadySubscribed')}
+                </p>
+              )}
+              {status === 'error' && (
+                <p className="text-sm text-center text-red-400 font-medium">
+                  {t('errorMessage')}
+                </p>
+              )}
+            </form>
 
-            <p className="text-sm text-center text-white/50">
+            <p className="text-sm text-center text-white/50 mt-4">
               {t('limitedUsers')}
             </p>
           </div>

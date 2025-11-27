@@ -1,12 +1,8 @@
 import { motion } from 'framer-motion'
 import { useLanguage } from '@/context/language-context'
 
-export default function AppleHero() {
+export default function AppleHero({ onOpenWaitlist }) {
   const { t } = useLanguage()
-  
-  const scrollToEarlyAccess = () => {
-    document.getElementById('early-access')?.scrollIntoView({ behavior: 'smooth' })
-  }
 
   return (
     <section 
@@ -42,13 +38,13 @@ export default function AppleHero() {
           className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6"
         >
           <button
-            onClick={scrollToEarlyAccess}
+            onClick={onOpenWaitlist}
             className="px-8 py-3 text-black text-base font-semibold rounded-lg bg-gradient-to-r from-gray-200 to-gray-300 hover:from-gray-300 hover:to-gray-400 transition-all duration-300 min-w-[200px]"
           >
             {t('getFreeEarlyAccess')}
           </button>
           <button
-            onClick={scrollToEarlyAccess}
+            onClick={onOpenWaitlist}
             className="px-8 py-3 text-gray-300 text-base font-semibold rounded-lg border-2 border-gray-400 hover:bg-gray-400 hover:text-black transition-all duration-300 min-w-[200px]"
           >
             {t('bookFreeTesting')}

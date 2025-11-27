@@ -14,7 +14,7 @@ const getMenuItems = (t) => [
   { name: t('earlyAccess'), section: 'early-access' },
 ]
 
-export default function AppleNav() {
+export default function AppleNav({ onOpenWaitlist }) {
   const [menuState, setMenuState] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const { language, toggleLanguage, t } = useLanguage()
@@ -161,7 +161,7 @@ export default function AppleNav() {
                     'bg-white text-black hover:bg-white/90 text-xs px-3',
                     isScrolled && 'lg:hidden'
                   )}
-                  onClick={() => scrollToSection('early-access')}
+                  onClick={onOpenWaitlist}
                 >
                   <span>{t('earlyAccess')}</span>
                 </Button>
@@ -171,7 +171,7 @@ export default function AppleNav() {
                     'bg-white text-black hover:bg-white/90 hidden text-xs px-3',
                     isScrolled && 'lg:inline-flex'
                   )}
-                  onClick={() => scrollToSection('early-access')}
+                  onClick={onOpenWaitlist}
                 >
                   <span>{t('getStarted')}</span>
                 </Button>
