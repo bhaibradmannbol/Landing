@@ -148,9 +148,10 @@ app.post('/api/early-access', async (req, res) => {
     // Save to database
     const subscriber = await Subscriber.create({ email, name, userType });
     
-    // Send welcome email via Resend
+    // Send welcome email to user via Resend
     if (resend) {
       try {
+        // Send welcome email to user
         await resend.emails.send({
           from: process.env.RESEND_FROM_EMAIL || 'HausPet <onboarding@resend.dev>',
           to: email,
@@ -158,6 +159,26 @@ app.post('/api/early-access', async (req, res) => {
           html: getWelcomeEmail(name),
         });
         console.log('📧 Welcome email sent to:', email);
+        
+        // Send notification to admin
+        const adminEmail = process.env.ADMIN_EMAIL || 'bhaveshchaudhary@icloud.com';
+        await resend.emails.send({
+          from: process.env.RESEND_FROM_EMAIL || 'HausPet <onboarding@resend.dev>',
+          to: adminEmail,
+          subject: '🎉 New Early Access Signup!',
+          html: `
+            <div style="font-family: -apple-system, sans-serif; padding: 20px;">
+              <h2>New Early Access Signup!</h2>
+              <p><strong>Name:</strong> ${name || 'Not provided'}</p>
+              <p><strong>Email:</strong> ${email}</p>
+              <p><strong>Type:</strong> ${userType}</p>
+              <p><strong>Time:</strong> ${new Date().toLocaleString()}</p>
+              <hr>
+              <p style="color: #666;">Total subscribers can be viewed at /api/subscribers</p>
+            </div>
+          `,
+        });
+        console.log('📧 Admin notification sent');
       } catch (emailError) {
         console.error('Email error:', emailError.message);
       }
