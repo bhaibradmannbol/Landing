@@ -1,10 +1,13 @@
 import { Button } from '@/components/ui/button'
 import { Check, ExternalLink } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { useLanguage } from '@/context/language-context'
 
 const GOOGLE_FORM_URL = 'https://forms.gle/your-form-id' // Replace with actual form URL
 
 export default function EarlyAccessSection() {
+  const { t } = useLanguage()
+  
   return (
     <section id="early-access" className="py-24 px-6">
       <div className="max-w-7xl mx-auto">
@@ -16,13 +19,13 @@ export default function EarlyAccessSection() {
           className="text-center mb-12"
         >
           <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium bg-gray-400/10 text-gray-300 border border-gray-400/20 mb-6">
-            Limited Availability
+            {t('limitedAvailability')}
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Get Free Early Access
+            {t('getFreeEarlyAccessTitle')}
           </h2>
           <p className="text-lg text-white/60 max-w-2xl mx-auto">
-            Join our exclusive beta program and be among the first to experience the future of pet health monitoring. No cost, no commitment.
+            {t('earlyAccessSubtitle')}
           </p>
         </motion.div>
 
@@ -39,17 +42,17 @@ export default function EarlyAccessSection() {
               WebkitBackdropFilter: 'blur(10px)'
             }}
           >
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">Why Join Early?</h3>
-            <p className="text-white/60 mb-8">Get exclusive benefits as an early adopter</p>
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">{t('whyJoinEarly')}</h3>
+            <p className="text-white/60 mb-8">{t('exclusiveBenefits')}</p>
             
             <div className="space-y-4 mb-8">
               {[
-                '24/7 continuous monitoring of your dog\'s vital signs',
-                'Instant health alerts for abnormalities',
-                'AI-powered health summaries in natural language',
-                'One-tap emergency vet booking',
-                'Complete medical records and health history',
-                'Peace of mind knowing your dog\'s health is always being monitored'
+                t('feature1'),
+                t('feature2'),
+                t('feature3'),
+                t('feature4'),
+                t('feature5'),
+                t('feature6')
               ].map((feature, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <Check className="w-5 h-5 text-gray-300 flex-shrink-0 mt-0.5" />
@@ -63,12 +66,12 @@ export default function EarlyAccessSection() {
               className="w-full mb-4 bg-white text-black hover:bg-white/90 font-semibold"
               onClick={() => window.open(GOOGLE_FORM_URL, '_blank')}
             >
-              <span>Request Free Access</span>
+              <span>{t('requestFreeAccess')}</span>
               <ExternalLink className="w-4 h-4 ml-2" />
             </Button>
 
             <p className="text-sm text-center text-white/50">
-              Limited to 500 users globally • Completely free for early adopters
+              {t('limitedUsers')}
             </p>
           </div>
 
@@ -78,33 +81,33 @@ export default function EarlyAccessSection() {
               WebkitBackdropFilter: 'blur(10px)'
             }}
           >
-            <h4 className="text-sm font-bold text-white/60 mb-6">WHAT YOU GET</h4>
+            <h4 className="text-sm font-bold text-white/60 mb-6">{t('whatYouGet')}</h4>
             
             <div className="space-y-5">
               {[
                 {
-                  title: 'Smart collar with clinical-grade sensors',
-                  desc: 'Heart rate, temperature, and motion tracking'
+                  title: t('smartCollarSensors'),
+                  desc: t('smartCollarSensorsDesc')
                 },
                 {
-                  title: 'iOS & Android app with lifetime updates',
-                  desc: 'Real-time dashboards, AI assistant, medical records'
+                  title: t('iosAndroidApp'),
+                  desc: t('iosAndroidAppDesc')
                 },
                 {
-                  title: 'Dr. HausPet AI Assistant',
-                  desc: '24/7 health insights powered by advanced AI'
+                  title: t('drHauspetAI'),
+                  desc: t('drHauspetAIDesc')
                 },
                 {
-                  title: 'Priority access to vet network',
-                  desc: 'Direct integration with validated veterinary clinics'
+                  title: t('priorityVetAccess'),
+                  desc: t('priorityVetAccessDesc')
                 },
                 {
-                  title: 'Secure cloud storage for medical records',
-                  desc: 'HIPAA-compliant, military-grade encryption'
+                  title: t('secureCloud'),
+                  desc: t('secureCloudDesc')
                 },
                 {
-                  title: 'Early adopter benefits',
-                  desc: 'Exclusive features and lifetime discounts'
+                  title: t('earlyAdopterBenefits'),
+                  desc: t('earlyAdopterBenefitsDesc')
                 }
               ].map((item, i) => (
                 <div key={i} className="border-l-2 border-white/20 pl-4">

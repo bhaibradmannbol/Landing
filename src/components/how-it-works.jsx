@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import SplitText from '@/components/ui/split-text'
+import { useLanguage } from '@/context/language-context'
 
 const MonitorIcon = () => (
   <svg viewBox="0 0 64 64" fill="none" className="w-full h-full">
@@ -90,24 +91,25 @@ const ShareIcon = () => (
 )
 
 export default function HowItWorks() {
+  const { t } = useLanguage()
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   const steps = [
     {
       icon: MonitorIcon,
-      title: 'Monitor',
-      description: 'Smart collar tracks vital signs 24/7',
+      title: t('monitor'),
+      description: t('monitorDesc'),
     },
     {
       icon: AnalyzeIcon,
-      title: 'Analyze',
-      description: 'AI detects health issues early',
+      title: t('analyze'),
+      description: t('analyzeDesc'),
     },
     {
       icon: ShareIcon,
-      title: 'Share',
-      description: 'Vet gets real-time access',
+      title: t('share'),
+      description: t('shareDesc'),
     },
   ]
 
@@ -133,7 +135,7 @@ export default function HowItWorks() {
       <div className="max-w-7xl mx-auto relative z-10" ref={ref}>
         <div className="text-center mb-16">
           <SplitText
-            text="How It Works"
+            text={t('howItWorksTitle')}
             className="text-5xl font-bold text-white mb-4"
             delay={100}
             duration={0.6}

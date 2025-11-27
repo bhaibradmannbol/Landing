@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { useLanguage } from '@/context/language-context'
 
 export default function BentoGridSection() {
+  const { t } = useLanguage()
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
@@ -17,10 +19,10 @@ export default function BentoGridSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            The Complete Health Ecosystem
+            {t('completeHealthEcosystem')}
           </h2>
           <p className="text-lg text-white/60 max-w-3xl mx-auto">
-            One wearable creates a complete health monitoring system. Pet owner, real data, veterinarian, and early intervention work together for better health outcomes.
+            {t('bentoSubtitle')}
           </p>
         </motion.div>
 
@@ -52,19 +54,19 @@ export default function BentoGridSection() {
             
             <div className="relative z-10">
               <h3 className="text-3xl font-bold text-white mb-4">
-                Why Real-Time Monitoring Matters
+                {t('whyMonitoringMatters')}
               </h3>
               <p className="text-white/90 mb-6 text-lg">
-                Pet health issues don't announce themselves. They develop silently between vet visits. By the time you notice something is wrong, the problem has progressed significantly.
+                {t('monitoringDesc')}
               </p>
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <div className="text-4xl font-bold text-gray-300 mb-2">35%</div>
-                  <p className="text-sm text-white/80">One in three dogs have undiagnosed heart disease. Without continuous monitoring, your vet only sees snapshots.</p>
+                  <p className="text-sm text-white/80">{t('heartDiseaseStat')}</p>
                 </div>
                 <div>
                   <div className="text-4xl font-bold text-gray-300 mb-2">80%</div>
-                  <p className="text-sm text-white/80">Your vet is brilliant. But they're working blind. They see your pet for 15 minutes once a year.</p>
+                  <p className="text-sm text-white/80">{t('vetBlindStat')}</p>
                 </div>
               </div>
             </div>
@@ -101,10 +103,10 @@ export default function BentoGridSection() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-white mb-2">
-                  24/7 Monitoring
+                  {t('monitoring247')}
                 </h3>
                 <p className="text-sm text-white/80">
-                  Your pet wears the collar like any normal collar. No discomfort. Just continuous, silent health monitoring while your pet lives their life.
+                  {t('monitoring247Desc')}
                 </p>
               </div>
             </div>
@@ -141,10 +143,10 @@ export default function BentoGridSection() {
               </div>
               <div>
                 <h3 className="text-lg font-bold text-white mb-1">
-                  AI-Powered Intelligence
+                  {t('aiPowered')}
                 </h3>
                 <p className="text-sm text-white/80">
-                  42,000 measurements create patterns. Patterns show problems before they become emergencies. This is how early detection works.
+                  {t('aiPoweredDesc')}
                 </p>
               </div>
             </div>
@@ -180,10 +182,10 @@ export default function BentoGridSection() {
                 </svg>
               </div>
               <h3 className="text-lg font-bold text-white mb-1">
-                Instant Vet Access
+                {t('instantVetAccess')}
               </h3>
               <p className="text-sm text-white/80">
-                Your vet sees 365 days of health data instead of 15 minutes of observation. Evidence-based diagnosis.
+                {t('instantVetAccessDesc')}
               </p>
             </div>
           </motion.div>
@@ -218,10 +220,10 @@ export default function BentoGridSection() {
                 </svg>
               </div>
               <h3 className="text-sm font-bold text-white mb-1">
-                Smart Alerts
+                {t('smartAlerts')}
               </h3>
               <p className="text-xs text-white/80">
-                Never miss health changes
+                {t('smartAlertsDesc')}
               </p>
             </div>
           </motion.div>
