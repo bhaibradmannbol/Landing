@@ -10,19 +10,19 @@ export default function StatsImpactSection() {
 
   const stats = [
     {
-      number: '10,000+',
-      label: t('petsMonitored'),
-      description: t('petsMonitoredDesc')
+      number: '1',
+      label: t('clinicPartner'),
+      description: t('clinicPartnerDesc')
     },
     {
-      number: '42,000',
-      label: t('healthAlertsSent'),
-      description: t('healthAlertsDesc')
+      number: '400+',
+      label: t('petsAccess'),
+      description: t('petsAccessDesc')
     },
     {
-      number: '98%',
-      label: t('vetSatisfaction'),
-      description: t('vetSatisfactionDesc')
+      number: '✓',
+      label: t('vetTested'),
+      description: t('vetTestedDesc')
     },
     {
       number: '24/7',
