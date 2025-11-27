@@ -3,10 +3,12 @@ import { Send, MessageCircle, Sparkles, Clock } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { GEMINI_API_KEY, GEMINI_API_URL, SYSTEM_PROMPTS } from '@/config/gemini'
 import { motion } from 'framer-motion'
+import { useLanguage } from '@/context/language-context'
 
 export default function ChatSection() {
+  const { t } = useLanguage()
   const [messages, setMessages] = useState([
-    { type: 'bot', text: 'Hello! I\'m Dr. HausPet. How can I help with your pet\'s health today? 🐾' }
+    { type: 'bot', text: t('chatGreeting') }
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
@@ -164,10 +166,10 @@ Provide a clear, professional veterinary response:`;
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-4">
-            24/7 AI Veterinary Assistant
+            {t('aiVetAssistant')}
           </h2>
           <p className="text-lg text-white/60 max-w-2xl mx-auto">
-            Get instant answers to your pet health questions, powered by advanced AI
+            {t('aiVetAssistantDesc')}
           </p>
         </motion.div>
 
@@ -187,15 +189,15 @@ Provide a clear, professional veterinary response:`;
           >
             <div className="flex items-center gap-2 text-gray-300 mb-6">
               <Sparkles className="w-5 h-5" />
-              <span className="text-sm font-medium">AI Health Monitoring</span>
+              <span className="text-sm font-medium">{t('aiHealthMonitoring')}</span>
             </div>
             
             <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-              Real-time health insights from your pet's data.
+              {t('realTimeInsights')}
             </h3>
             
             <p className="text-white/60 mb-8">
-              Dr. HausPet analyzes vital signs continuously and alerts you to any concerns before they become emergencies.
+              {t('drHauspetAnalyzes')}
             </p>
 
             {/* Connection Status */}
@@ -210,7 +212,7 @@ Provide a clear, professional veterinary response:`;
               <div className="relative flex items-center justify-center py-8">
                 <div className="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full border border-white/20">
                   <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                  <span className="text-sm font-medium text-white">Connected to <span className="font-bold">HausPet</span></span>
+                  <span className="text-sm font-medium text-white">{t('connectedTo')} <span className="font-bold">HausPet</span></span>
                 </div>
               </div>
 
@@ -240,18 +242,18 @@ Provide a clear, professional veterinary response:`;
           >
             <div className="flex items-center gap-2 text-gray-300 mb-6">
               <MessageCircle className="w-5 h-5" />
-              <span className="text-sm font-medium">Natural Conversations</span>
+              <span className="text-sm font-medium">{t('naturalConversations')}</span>
             </div>
             
             <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
-              AI that understands your pet's health context.
+              {t('aiUnderstandsContext')}
             </h3>
 
             {/* Demo Chat */}
             <div className="space-y-3">
               <div className="flex items-center gap-2 text-white/50 text-xs mb-2">
                 <div className="w-4 h-4 rounded-full bg-white/20" />
-                <span>Pet Owner</span>
+                <span>{t('petOwner')}</span>
               </div>
               
               {demoConversation.map((msg, i) => (
@@ -283,8 +285,8 @@ Provide a clear, professional veterinary response:`;
         >
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-6">
-              <h3 className="text-2xl font-bold text-white mb-2">Try it yourself</h3>
-              <p className="text-white/60">Ask Dr. HausPet anything about pet health</p>
+              <h3 className="text-2xl font-bold text-white mb-2">{t('tryItYourself')}</h3>
+              <p className="text-white/60">{t('askDrHauspet')}</p>
             </div>
 
             <div 
@@ -304,7 +306,7 @@ Provide a clear, professional veterinary response:`;
                     <h4 className="font-semibold text-white text-sm">Dr. HausPet</h4>
                     <div className="flex items-center gap-1.5">
                       <div className="w-2 h-2 bg-gray-400 rounded-full" />
-                      <span className="text-xs text-white/50">Online</span>
+                      <span className="text-xs text-white/50">{t('online')}</span>
                     </div>
                   </div>
                 </div>
@@ -362,7 +364,7 @@ Provide a clear, professional veterinary response:`;
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                     onKeyDown={handleKeyPress}
-                    placeholder="Ask about your pet's health..."
+                    placeholder={t('askAboutHealth')}
                     className="flex-1 bg-transparent text-white text-sm placeholder:text-white/30 focus:outline-none py-2"
                   />
                   <Button

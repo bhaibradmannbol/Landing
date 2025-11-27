@@ -109,6 +109,41 @@ const translations = {
     footerTagline: 'Keeping pets healthy, one heartbeat at a time.',
     allRightsReserved: '© 2024 HausPet. All rights reserved.',
     emailUs: 'Email us',
+    
+    // Chat Section
+    aiVetAssistant: '24/7 AI Veterinary Assistant',
+    aiVetAssistantDesc: 'Get instant answers to your pet health questions, powered by advanced AI',
+    aiHealthMonitoring: 'AI Health Monitoring',
+    realTimeInsights: 'Real-time health insights from your pet\'s data.',
+    drHauspetAnalyzes: 'Dr. HausPet analyzes vital signs continuously and alerts you to any concerns before they become emergencies.',
+    connectedTo: 'Connected to',
+    naturalConversations: 'Natural Conversations',
+    aiUnderstandsContext: 'AI that understands your pet\'s health context.',
+    petOwner: 'Pet Owner',
+    tryItYourself: 'Try it yourself',
+    askDrHauspet: 'Ask Dr. HausPet anything about pet health',
+    online: 'Online',
+    askAboutHealth: 'Ask about your pet\'s health...',
+    chatGreeting: 'Hello! I\'m Dr. HausPet. How can I help with your pet\'s health today? 🐾',
+    
+    // App Screenshots
+    appFeatures: 'App Features',
+    seeInAction: 'See HausPet in Action',
+    intuitiveApps: 'Intuitive apps for pet owners and clinical-grade tools for veterinarians',
+    moreFeatures: 'More Features',
+    additionalCapabilities: 'Additional capabilities',
+    
+    // Stats Section
+    realHealthImpact: 'Real Health Impact',
+    statsSubtitle: 'HausPet is changing how pet health is monitored and managed.',
+    petsMonitored: 'Pets Monitored',
+    petsMonitoredDesc: 'And counting. Building the world\'s largest pet health dataset.',
+    healthAlertsSent: 'Health Alerts Sent',
+    healthAlertsDesc: 'Early detections that prevented emergency situations.',
+    vetSatisfaction: 'Vet Satisfaction',
+    vetSatisfactionDesc: 'Veterinarians report better diagnostic accuracy with HausPet data.',
+    continuousMonitoring: 'Continuous Monitoring',
+    continuousMonitoringDesc: 'Never miss important health changes again.',
   },
   de: {
     // Nav
@@ -218,6 +253,41 @@ const translations = {
     footerTagline: 'Haustiere gesund halten, ein Herzschlag nach dem anderen.',
     allRightsReserved: '© 2024 HausPet. Alle Rechte vorbehalten.',
     emailUs: 'E-Mail senden',
+    
+    // Chat Section
+    aiVetAssistant: '24/7 KI-Tierarzt-Assistent',
+    aiVetAssistantDesc: 'Erhalten Sie sofortige Antworten auf Ihre Fragen zur Tiergesundheit, unterstützt durch fortschrittliche KI',
+    aiHealthMonitoring: 'KI-Gesundheitsüberwachung',
+    realTimeInsights: 'Echtzeit-Gesundheitseinblicke aus den Daten Ihres Haustieres.',
+    drHauspetAnalyzes: 'Dr. HausPet analysiert kontinuierlich Vitalzeichen und warnt Sie vor Bedenken, bevor sie zu Notfällen werden.',
+    connectedTo: 'Verbunden mit',
+    naturalConversations: 'Natürliche Gespräche',
+    aiUnderstandsContext: 'KI, die den Gesundheitskontext Ihres Haustieres versteht.',
+    petOwner: 'Tierbesitzer',
+    tryItYourself: 'Probieren Sie es selbst',
+    askDrHauspet: 'Fragen Sie Dr. HausPet alles über Tiergesundheit',
+    online: 'Online',
+    askAboutHealth: 'Fragen Sie zur Gesundheit Ihres Haustieres...',
+    chatGreeting: 'Hallo! Ich bin Dr. HausPet. Wie kann ich Ihnen heute bei der Gesundheit Ihres Haustieres helfen? 🐾',
+    
+    // App Screenshots
+    appFeatures: 'App-Funktionen',
+    seeInAction: 'HausPet in Aktion sehen',
+    intuitiveApps: 'Intuitive Apps für Tierbesitzer und klinische Tools für Tierärzte',
+    moreFeatures: 'Weitere Funktionen',
+    additionalCapabilities: 'Zusätzliche Möglichkeiten',
+    
+    // Stats Section
+    realHealthImpact: 'Echte Gesundheitswirkung',
+    statsSubtitle: 'HausPet verändert, wie Tiergesundheit überwacht und verwaltet wird.',
+    petsMonitored: 'Überwachte Haustiere',
+    petsMonitoredDesc: 'Und es werden mehr. Aufbau des weltweit größten Tiergesundheits-Datensatzes.',
+    healthAlertsSent: 'Gesundheitswarnungen gesendet',
+    healthAlertsDesc: 'Früherkennung, die Notfallsituationen verhindert hat.',
+    vetSatisfaction: 'Tierarzt-Zufriedenheit',
+    vetSatisfactionDesc: 'Tierärzte berichten von besserer Diagnosegenauigkeit mit HausPet-Daten.',
+    continuousMonitoring: 'Kontinuierliche Überwachung',
+    continuousMonitoringDesc: 'Verpassen Sie nie wieder wichtige Gesundheitsänderungen.',
   }
 }
 

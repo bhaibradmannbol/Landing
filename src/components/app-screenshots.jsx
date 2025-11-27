@@ -3,8 +3,10 @@ import { useInView } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
 import { MessageSquare, BarChart3, FileText, Users } from 'lucide-react'
 import SplitText from '@/components/ui/split-text'
+import { useLanguage } from '@/context/language-context'
 
 export default function AppScreenshots() {
+  const { t } = useLanguage()
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
   const [activeIndex, setActiveIndex] = useState(0)
@@ -98,17 +100,17 @@ export default function AppScreenshots() {
           className="text-center mb-16"
         >
           <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium bg-gray-400/10 text-gray-300 border border-gray-400/20 mb-6">
-            App Features
+            {t('appFeatures')}
           </span>
           <SplitText
-            text="See HausPet in Action"
+            text={t('seeInAction')}
             className="text-5xl font-bold text-white mb-4"
             delay={100}
             duration={0.6}
             splitType="words"
           />
           <p className="text-xl text-white/50">
-            Intuitive apps for pet owners and clinical-grade tools for veterinarians
+            {t('intuitiveApps')}
           </p>
         </motion.div>
 
@@ -228,8 +230,8 @@ export default function AppScreenshots() {
               className="space-y-6"
             >
               <div className="mb-8">
-                <h3 className="text-xl font-bold text-white mb-1">More Features</h3>
-                <p className="text-white/50 text-sm">Additional capabilities</p>
+                <h3 className="text-xl font-bold text-white mb-1">{t('moreFeatures')}</h3>
+                <p className="text-white/50 text-sm">{t('additionalCapabilities')}</p>
               </div>
 
               {current.rightFeatures.map((feature, i) => (

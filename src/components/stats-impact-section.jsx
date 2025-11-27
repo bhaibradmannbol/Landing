@@ -1,31 +1,33 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { useLanguage } from '@/context/language-context'
 
 export default function StatsImpactSection() {
+  const { t } = useLanguage()
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   const stats = [
     {
       number: '10,000+',
-      label: 'Pets Monitored',
-      description: 'And counting. Building the world\'s largest pet health dataset.'
+      label: t('petsMonitored'),
+      description: t('petsMonitoredDesc')
     },
     {
       number: '42,000',
-      label: 'Health Alerts Sent',
-      description: 'Early detections that prevented emergency situations.'
+      label: t('healthAlertsSent'),
+      description: t('healthAlertsDesc')
     },
     {
       number: '98%',
-      label: 'Vet Satisfaction',
-      description: 'Veterinarians report better diagnostic accuracy with HausPet data.'
+      label: t('vetSatisfaction'),
+      description: t('vetSatisfactionDesc')
     },
     {
       number: '24/7',
-      label: 'Continuous Monitoring',
-      description: 'Never miss important health changes again.'
+      label: t('continuousMonitoring'),
+      description: t('continuousMonitoringDesc')
     }
   ]
 
@@ -39,10 +41,10 @@ export default function StatsImpactSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Real Health Impact
+            {t('realHealthImpact')}
           </h2>
           <p className="text-lg text-white/60 max-w-2xl mx-auto">
-            HausPet is changing how pet health is monitored and managed.
+            {t('statsSubtitle')}
           </p>
         </motion.div>
 
