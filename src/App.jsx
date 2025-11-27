@@ -7,8 +7,8 @@ import BentoGridSection from '@/components/bento-grid-section'
 import HowItWorks from '@/components/how-it-works'
 import AppScreenshots from '@/components/app-screenshots'
 import ChatSection from '@/components/chat-section'
+import TrustedByVets from '@/components/trusted-by-vets'
 import EarlyAccessSection from '@/components/early-access-section'
-
 import StatsImpactSection from '@/components/stats-impact-section'
 import CTASection from '@/components/cta-section'
 import Footer from '@/components/footer'
@@ -62,6 +62,7 @@ export default function App() {
       <HowItWorks />
       <AppScreenshots />
       <ChatSection />
+      <TrustedByVets />
       <StatsImpactSection />
       <EarlyAccessSection />
       <CTASection />

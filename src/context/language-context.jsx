@@ -144,6 +144,24 @@ const translations = {
     vetSatisfactionDesc: 'Veterinarians report better diagnostic accuracy with HausPet data.',
     continuousMonitoring: 'Continuous Monitoring',
     continuousMonitoringDesc: 'Never miss important health changes again.',
+    
+    // Trusted by Vets Section
+    clinicallyValidated: 'Clinically Validated',
+    trustedByVets: 'Trusted & Proven by Veterinary Experts',
+    trustedByVetsDesc: 'Real clinical validation from the professionals who treat pets every day.',
+    officialPartner: 'Official Clinical Partner',
+    clinicalPartnership: 'Clinical Partnership',
+    partnershipDesc: 'HausPet has been officially endorsed through a clinical partnership with Kleintierpraxis Jan Schneider, one of Europe\'s most respected veterinary practices. Dr. Jan Schneider is actively testing and validating HausPet\'s accuracy in monitoring vital parameters.',
+    vetExperience: '20+ years clinical experience',
+    realWorldTesting: 'Real-World Testing',
+    realWorldTestingDesc: 'Testing with actual patients ensures every feature delivers genuine diagnostic value.',
+    validatedAccuracy: 'Validated Accuracy',
+    validatedAccuracyDesc: 'Heart rate, temperature, and activity monitoring validated by clinical experts.',
+    expandingNetwork: 'Expanding Network',
+    expandingNetworkDesc: '500+ European veterinarians joining the partnership program.',
+    yearsExperience: 'Years Clinical Experience',
+    vetsJoining: 'Vets Joining Network',
+    clinicalGrade: 'Clinical Grade',
   },
   de: {
     // Nav
@@ -288,6 +306,24 @@ const translations = {
     vetSatisfactionDesc: 'Tierärzte berichten von besserer Diagnosegenauigkeit mit HausPet-Daten.',
     continuousMonitoring: 'Kontinuierliche Überwachung',
     continuousMonitoringDesc: 'Verpassen Sie nie wieder wichtige Gesundheitsänderungen.',
+    
+    // Trusted by Vets Section
+    clinicallyValidated: 'Klinisch Validiert',
+    trustedByVets: 'Vertraut & Bewährt von Tierarzt-Experten',
+    trustedByVetsDesc: 'Echte klinische Validierung von den Fachleuten, die täglich Haustiere behandeln.',
+    officialPartner: 'Offizieller Klinischer Partner',
+    clinicalPartnership: 'Klinische Partnerschaft',
+    partnershipDesc: 'HausPet wurde durch eine klinische Partnerschaft mit der Kleintierpraxis Jan Schneider, einer der angesehensten Tierarztpraxen Europas, offiziell bestätigt. Dr. Jan Schneider testet und validiert aktiv die Genauigkeit von HausPet bei der Überwachung von Vitalparametern.',
+    vetExperience: '20+ Jahre klinische Erfahrung',
+    realWorldTesting: 'Praxistests',
+    realWorldTestingDesc: 'Tests mit echten Patienten stellen sicher, dass jede Funktion echten diagnostischen Wert liefert.',
+    validatedAccuracy: 'Validierte Genauigkeit',
+    validatedAccuracyDesc: 'Herzfrequenz, Temperatur und Aktivitätsüberwachung von klinischen Experten validiert.',
+    expandingNetwork: 'Wachsendes Netzwerk',
+    expandingNetworkDesc: '500+ europäische Tierärzte treten dem Partnerprogramm bei.',
+    yearsExperience: 'Jahre Klinische Erfahrung',
+    vetsJoining: 'Tierärzte im Netzwerk',
+    clinicalGrade: 'Klinische Qualität',
   }
 }
 
