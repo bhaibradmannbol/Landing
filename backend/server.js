@@ -56,14 +56,22 @@ app.use(express.json());
 
 // ============ DATABASE CONNECTION ============
 const mongoUri = process.env.MONGODB_URI;
+let dbConnected = false;
+
 if (mongoUri && mongoUri.startsWith('mongodb')) {
   console.log('🔄 Connecting to MongoDB...');
   mongoose.connect(mongoUri, {
     serverSelectionTimeoutMS: 10000,
     socketTimeoutMS: 45000,
   })
-    .then(() => console.log('✅ MongoDB connected'))
-    .catch(err => console.error('❌ MongoDB error:', err.message));
+    .then(() => {
+      console.log('✅ MongoDB connected');
+      dbConnected = true;
+    })
+    .catch(err => {
+      console.error('❌ MongoDB error:', err.message);
+      console.log('⚠️ Running without database - emails will still work!');
+    });
 } else {
   console.log('⚠️ No MongoDB URI provided, running without database');
 }
@@ -332,26 +340,31 @@ app.post('/api/early-access', async (req, res) => {
   }
   
   try {
-    // Check if already exists
-    const existing = await Subscriber.findOne({ email });
-    if (existing) {
-      return res.status(409).json({ success: false, error: 'Email already subscribed' });
+    let totalSubscribers = 1;
+    
+    // Try to save to database if connected
+    if (dbConnected && mongoose.connection.readyState === 1) {
+      try {
+        const existing = await Subscriber.findOne({ email });
+        if (existing) {
+          return res.status(409).json({ success: false, error: 'Email already subscribed' });
+        }
+        await Subscriber.create({ email, name, userType });
+        totalSubscribers = await Subscriber.countDocuments();
+        console.log('✅ Saved to database');
+      } catch (dbError) {
+        console.log('⚠️ Database save failed, continuing with email only');
+      }
     }
     
-    // Save to database
-    const subscriber = await Subscriber.create({ email, name, userType });
-    
-    // Get total subscriber count for admin notification
-    const totalSubscribers = await Subscriber.countDocuments();
-    
-    // Send emails via Resend
+    // Send emails via Resend (works even without database)
     if (resend) {
       try {
         // Send welcome email to user
         await resend.emails.send({
           from: process.env.RESEND_FROM_EMAIL || 'HausPet <onboarding@resend.dev>',
           to: email,
-          subject: '� Welcome tom HausPet Early Access!',
+          subject: '🎉 Welcome to HausPet Early Access!',
           html: getWelcomeEmail(name),
         });
         console.log('📧 Welcome email sent to:', email);
@@ -367,6 +380,7 @@ app.post('/api/early-access', async (req, res) => {
         console.log('📧 Admin notification sent to:', adminEmail);
       } catch (emailError) {
         console.error('Email error:', emailError.message);
+        return res.status(500).json({ success: false, error: 'Failed to send email' });
       }
     }
     
